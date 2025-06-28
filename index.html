@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Договор с Мефистофелем | Soul Market</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=MedievalSharp&family=UnifrakturMaguntia&display=swap');
+        
+        body {
+            background-color: #0a0a0a;
+            color: #c0c0c0;
+            font-family: 'MedievalSharp', cursive;
+            margin: 0;
+            padding: 0;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(139, 0, 0, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 80% 70%, rgba(139, 0, 0, 0.1) 0%, transparent 20%),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M50 0 L100 50 L50 100 L0 50 Z" fill="none" stroke="darkred" stroke-width="1"/></svg>');
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+        }
+
+        h1, h2, h3 {
+            font-family: 'UnifrakturMaguntia', cursive;
+            color: #8B0000;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3em;
+            text-shadow: 0 0 10px rgba(139, 0, 0, 0.7);
+            margin-bottom: 0;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-style: italic;
+            margin-top: 0;
+            color: #8B0000;
+        }
+
+        .pentagram {
+            position: absolute;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .pentagram.top-left {
+            top: 50px;
+            left: 50px;
+            transform: rotate(15deg);
+        }
+
+        .pentagram.bottom-right {
+            bottom: 50px;
+            right: 50px;
+            transform: rotate(-15deg);
+        }
+
+        .deal-options {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 30px 0;
+        }
+
+        .deal-option {
+            width: 45%;
+            background: rgba(20, 20, 20, 0.8);
+            border: 1px solid #8B0000;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .deal-option:hover {
+            background: rgba(139, 0, 0, 0.2);
+            box-shadow: 0 0 15px rgba(139, 0, 0, 0.5);
+            transform: scale(1.05);
+        }
+
+        .contract {
+            background: rgba(10, 10, 10, 0.9);
+            border: 1px solid #8B0000;
+            padding: 20px;
+            margin: 30px 0;
+            position: relative;
+        }
+
+        .contract:before {
+            content: "";
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            right: 5px;
+            bottom: 5px;
+            border: 1px dashed #8B0000;
+            pointer-events: none;
+        }
+
+        .contract-text {
+            font-family: 'MedievalSharp', cursive;
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+
+        .signature-line {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+
+        .signature {
+            border-top: 1px solid #8B0000;
+            width: 200px;
+            text-align: center;
+            padding-top: 5px;
+        }
+
+        .pentagram-button {
+            display: block;
+            margin: 30px auto;
+            padding: 15px 30px;
+            background: linear-gradient(to bottom, #8B0000, #500000);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-family: 'UnifrakturMaguntia', cursive;
+            font-size: 1.5em;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .pentagram-button:hover {
+            background: linear-gradient(to bottom, #A00000, #600000);
+            box-shadow: 0 0 20px rgba(139, 0, 0, 0.8);
+            transform: scale(1.05);
+        }
+
+        .pentagram-button:active {
+            background: linear-gradient(to bottom, #600000, #300000);
+        }
+
+        .pentagram-button:after {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50 0 L63 37 L100 38 L69 59 L82 96 L50 73 L18 96 L31 59 L0 38 L37 37 Z" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="2"/></svg>');
+            background-size: 50px 50px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .pentagram-button:hover:after {
+            opacity: 1;
+        }
+
+        .testimonials {
+            margin: 40px 0;
+        }
+
+        .testimonial {
+            background: rgba(20, 20, 20, 0.7);
+            border-left: 3px solid #8B0000;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-author {
+            font-style: italic;
+            color: #8B0000;
+            text-align: right;
+        }
+
+        .faq {
+            margin: 40px 0;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+        }
+
+        .faq-question {
+            color: #8B0000;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .faq-answer {
+            margin-top: 5px;
+            padding-left: 20px;
+            border-left: 2px solid #8B0000;
+        }
+
+        .contacts {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .countdown {
+            text-align: center;
+            font-size: 1.2em;
+            margin: 20px 0;
+            color: #8B0000;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            border-top: 1px solid #8B0000;
+            font-size: 0.9em;
+        }
+
+        /* Анимации */
+        @keyframes flicker {
+            0% { opacity: 0.7; }
+            50% { opacity: 1; }
+            100% { opacity: 0.7; }
+        }
+
+        .flicker {
+            animation: flicker 3s infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+
+        .float {
+            animation: float 6s infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="pentagram top-left float">✪</div>
+        <div class="pentagram bottom-right float">✪</div>
+        
+        <h1>SOUL MARKET</h1>
+        <p class="subtitle">Вечный договор между смертным и Владыкой Тьмы</p>
+        
+        <div class="countdown flicker">
+            До истечения срока предложения осталось: <span id="countdown">666:66:66:66</span>
+        </div>
+        
+        <p>Добро пожаловать, искатель! Ты ступил на путь, с которого нет возврата. Мефистофель предлагает тебе сделку - исполнение твоих самых сокровенных желаний в обмен на то, что ты и так однажды потеряешь.</p>
+        
+        <h2>🔥 Оформление вечного договора</h2>
+        
+        <h3>1. Выбери свой дар:</h3>
+        <div class="deal-options">
+            <div class="deal-option" onclick="selectDeal('wealth')">
+                🔮 <strong>Бесконечное богатство</strong><br>
+                Все сокровища мира будут у твоих ног
+            </div>
+            <div class="deal-option" onclick="selectDeal('fame')">
+                🎭 <strong>Величайшая слава</strong><br>
+                Твое имя будет жить в веках
+            </div>
+            <div class="deal-option" onclick="selectDeal('power')">
+                ⚡ <strong>Нечеловеческая сила</strong><br>
+                Превыше королей и правителей
+            </div>
+            <div class="deal-option" onclick="selectDeal('immortality')">
+                💀 <strong>Бессмертие</strong><br>
+                Время больше не будет иметь власти над тобой
+            </div>
+        </div>
+        
+        <h3>2. Скрепи договор своей кровью</h3>
+        <div class="contract">
+            <p class="contract-text">
+                "Я, <span contenteditable="true" id="name-input">___________</span>, в здравом уме и твердой памяти, добровольно и без принуждения передаю свою бессмертную душу во владение Повелителю Тьмы Мефистофелю в обмен на <span id="deal-output">___________</span>. Да будет так!<br><br>
+                Согласен на все условия вечного договора, включая нерушимость соглашения и невозможность его расторжения. Подтверждаю, что полностью осознаю последствия данного деяния."
+            </p>
+            <div class="signature-line">
+                <div class="signature">Подпись смертного</div>
+                <div class="signature">Печать Мефистофеля</div>
+            </div>
+        </div>
+        
+        <h3>3. Заключи договор</h3>
+        <button class="pentagram-button" onclick="sellSoul()">🔥 ЗАКЛЮЧИТЬ ДОГОВОР 🔥</button>
+        
+        <h2>☠️ Свидетельства заключивших договор</h2>
+        <div class="testimonials">
+            <div class="testimonial">
+                "Все обещания были исполнены в точности. Особняк, слуги, золото - все это теперь мое. Хотя иногда по ночам..."
+                <div class="testimonial-author">— Иван, Москва</div>
+            </div>
+            <div class="testimonial">
+                "С момента подписания мой талант расцвел. Теперь я играю на скрипке так, что слушатели плачут кровавыми слезами."
+                <div class="testimonial-author">— Сергей, Питер</div>
+            </div>
+            <div class="testimonial">
+                "300 лет жизни дали мне мудрость, о которой обычные смертные не могут и мечтать. Хотя иногда скучаю по простоте прошлого."
+                <div class="testimonial-author">— Аноним, 1678 г.</div>
+            </div>
+        </div>
+        
+        <h2>⚠️ Вопросы о вечном договоре</h2>
+        <div class="faq">
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleAnswer(this)">❓ Можно ли расторгнуть договор?</div>
+                <div class="faq-answer">Вечный договор не подлежит расторжению. Все условия выполняются неукоснительно.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleAnswer(this)">❓ Каков срок исполнения желания?</div>
+                <div class="faq-answer">Исполнение происходит в срок, определенный Владыкой. Обычно от 1 лунного цикла до 13 лет.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleAnswer(this)">❓ Что происходит после подписания?</div>
+                <div class="faq-answer">Ты получаешь знак договора и можешь ожидать исполнения своего желания. Все остальное - дело времени.</div>
+            </div>
+        </div>
+        
+        <h2>🔮 Как заключить договор</h2>
+        <div class="contacts">
+            📧 <em>Чернильные письма:</em> crossroads@infernal.com<br>
+            ☎ <em>Зов крови:</em> произнести имя трижды перед зеркалом<br>
+            📍 <em>Место встречи:</em> Перекрёсток семи дорог в полночь
+        </div>
+        
+        <footer>
+            © Вечный договор | Все права принадлежат Владыке Тьмы
+        </footer>
+    </div>
+
+    <script>
+        // Таймер обратного отсчета
+        function updateCountdown() {
+            const now = new Date();
+            const doomDay = new Date(now.getFullYear() + 666, 6, 6);
+            const diff = doomDay - now;
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            document.getElementById('countdown').innerText = 
+                `${days} дней ${hours} часов ${minutes} минут ${seconds} секунд`;
+        }
+        
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+        
+        // Выбор сделки
+        let selectedDeal = '';
+        
+        function selectDeal(deal) {
+            selectedDeal = deal;
+            const dealOutput = document.getElementById('deal-output');
+            
+            switch(deal) {
+                case 'wealth':
+                    dealOutput.innerText = 'бесконечное богатство';
+                    break;
+                case 'fame':
+                    dealOutput.innerText = 'величайшую славу';
+                    break;
+                case 'power':
+                    dealOutput.innerText = 'нечеловеческую силу';
+                    break;
+                case 'immortality':
+                    dealOutput.innerText = 'вечное бессмертие';
+                    break;
+                default:
+                    dealOutput.innerText = '___________';
+            }
+            
+            // Подсветка выбранного варианта
+            document.querySelectorAll('.deal-option').forEach(option => {
+                option.style.background = '';
+            });
+            event.currentTarget.style.background = 'rgba(139, 0, 0, 0.3)';
+        }
+        
+        // Продажа души
+        function sellSoul() {
+            if (!selectedDeal) {
+                alert('Ты не выбрал свой дар, смертный!');
+                return;
+            }
+            
+            const name = document.getElementById('name-input').innerText.trim();
+            if (!name || name === '___________') {
+                alert('Договор требует твоего истинного имени!');
+                return;
+            }
+            
+            // Случайное последствие
+            const consequences = [
+                'Знак договора появится на твоей груди при следующем восходе луны',
+                'Ты почувствуешь холодное прикосновение в полночь',
+                'Твои глаза приобретут новый оттенок',
+                'Тени начнут шептать тебе истину',
+                'Первая выплата поступит с следующим кровавым дождем'
+            ];
+            const randomConsequence = consequences[Math.floor(Math.random() * consequences.length)];
+            
+            // Эффекты
+            document.body.style.background = 'black';
+            document.querySelectorAll('*').forEach(el => {
+                el.style.color = 'darkred';
+                el.style.textShadow = '0 0 5px red';
+            });
+            
+            // Сообщение о заключении договора
+            setTimeout(() => {
+                alert(`ДОГОВОР ЗАКЛЮЧЁН, ${name.toUpperCase()}!\n\nТвое желание будет исполнено.\n${randomConsequence}.`);
+                
+                // Перенаправление
+                setTimeout(() => {
+                    window.location.href = 'https://en.wikipedia.org/wiki/Goethe%27s_Faust';
+                }, 3000);
+            }, 1000);
+        }
+        
+        // Показать/скрыть ответы FAQ
+        function toggleAnswer(question) {
+            const answer = question.nextElementSibling;
+            answer.style.display = answer.style.display === 'none' ? 'block' : 'none';
+        }
+        
+        // Предупреждение при закрытии
+        window.addEventListener('beforeunload', (e) => {
+            e.returnValue = 'Ты уверен, что хочешь уйти? Договор ждет...';
+            return e.returnValue;
+        });
+    </script>
+</body>
+</html>
